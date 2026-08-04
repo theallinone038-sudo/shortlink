@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Settings - ShortLink{% endblock %}
+{% block body %}
+<header>
+    <h1>Short<span>Link</span></h1>
+    <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+</header>
+<nav>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('settings') }}" class="active">Settings</a>
+</nav>
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for m in messages %}
+                <div class="flash">{{ m }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card">
+        <h2>Change Password</h2>
+        <p style="margin-bottom:15px; color:#888; font-size:13px;">Logged in as <b>{{ user.username }}</b></p>
+        <form method="POST">
+            <label>Current Password</label>
+            <input type="password" name="current_password" required>
+            <label>New Password</label>
+            <input type="password" name="new_password" required minlength="6">
+            <label>Confirm New Password</label>
+            <input type="password" name="confirm_password" required minlength="6">
+            <button type="submit">Update Password</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
