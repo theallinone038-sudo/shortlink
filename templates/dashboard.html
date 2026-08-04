@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - ShortLink{% endblock %}
+{% block body %}
+<header>
+    <h1>Short<span>Link</span></h1>
+    <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+</header>
+<nav>
+    <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
+    <a href="{{ url_for('settings') }}">Settings</a>
+</nav>
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for m in messages %}
+                <div class="flash">{{ m }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card">
+        <h2>Create New Short Link</h2>
+        <form method="POST">
+            <label>Destination URL</label>
+            <input type="text" name="destination" placeholder="https://example.com/page" required>
+            <label>Title (optional)</label>
+            <input type="text" name="title" placeholder="My link">
+            <button type="submit">Create Short Link</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Your Links ({{ links|length }})</h2>
+        {% if links %}
+            {% for link in links %}
+                <div class="link-item">
+                    <div class="short-url">{{ request.host_url }}{{ link.code }}</div>
+                    <div class="dest">→ {{ link.destination }}</div>
+                    {% if link.title %}<div class="dest">{{ link.title }}</div>{% endif %}
+                    <div class="clicks">{{ link.clicks }} clicks · created {{ link.created_at.strftime('%Y-%m-%d') }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="color:#999;">No links yet. Create your first one above.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
