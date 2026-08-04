@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Register - ShortLink{% endblock %}
+{% block body %}
+<div class="auth-wrap">
+    <div class="auth-box">
+        <h1>Short<span style="color:#3498db">Link</span></h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for m in messages %}
+                    <div class="flash">{{ m }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <label>Username</label>
+            <input type="text" name="username" required>
+            <label>Password (min 6 characters)</label>
+            <input type="password" name="password" required minlength="6">
+            <button type="submit">Create Account</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p>
+    </div>
+</div>
+{% endblock %}
