@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}ShortLink{% endblock %}</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #f0f2f5; min-height: 100vh; }
+
+    header {
+        background: #34495e;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+    }
+    header h1 { font-size: 22px; }
+    header h1 span { color: #3498db; }
+    header a.logout {
+        background: #4a6278;
+        color: white;
+        text-decoration: none;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+
+    nav {
+        background: #34495e;
+        padding: 0 20px 10px;
+        display: flex;
+        gap: 15px;
+    }
+    nav a {
+        color: #ccd6e0;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 15px;
+    }
+    nav a.active { background: #4a6278; color: white; font-weight: bold; }
+
+    .container { padding: 20px; max-width: 700px; margin: 0 auto; }
+
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+    }
+    .card h2 { margin-bottom: 20px; color: #2c3e50; }
+
+    label { font-weight: bold; margin-bottom: 6px; display: block; color: #444; font-size: 14px; }
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+    input:focus, textarea:focus { outline: none; border-color: #3498db; }
+
+    button, .btn {
+        width: 100%;
+        padding: 13px;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+    button:hover, .btn:hover { background: #2980b9; }
+
+    .flash {
+        background: #fff3cd;
+        border: 1px solid #ffe08a;
+        color: #7a5c00;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .link-item {
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 14px;
+        margin-bottom: 12px;
+    }
+    .link-item .short-url { color: #3498db; font-weight: bold; word-break: break-all; }
+    .link-item .dest { color: #666; font-size: 13px; word-break: break-all; }
+    .link-item .clicks { color: #999; font-size: 12px; margin-top: 6px; }
+
+    .auth-wrap {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    }
+    .auth-box {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        width: 90%;
+        max-width: 380px;
+    }
+    .auth-box h1 { text-align: center; color: #1e3c72; margin-bottom: 25px; }
+    .auth-box p { text-align: center; margin-top: 15px; font-size: 14px; color: #666; }
+    .auth-box p a { color: #3498db; }
+</style>
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
+</html>
