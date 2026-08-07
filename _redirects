@@ -1,13 +1,2 @@
-[build]
-  functions = "netlify/functions"
-  publish = "."
-
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/l?code=:splat"
-  status = 200
+/   /index.html   200
+/*   /.netlify/functions/l?code=:splat   200
