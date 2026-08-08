@@ -158,6 +158,8 @@ def dashboard():
     if request.method == "POST":
         destination = request.form.get("destination", "").strip()
         title = request.form.get("title", "").strip()
+        image_url = request.form.get("image_url", "").strip()
+        description = request.form.get("description", "").strip()
 
         if not destination.startswith(("http://", "https://")):
             flash("Please enter a valid URL starting with http:// or https://")
@@ -165,9 +167,8 @@ def dashboard():
 
         code = generate_code(db)
         db.execute(
-            "INSERT INTO link (user_id, code, destination, title, clicks, created_at) VALUES (?, ?, ?, ?, 0, ?)",
-            (user["id"], code, destination, title, datetime.utcnow().isoformat()),
-        )
+            ""INSERT INTO link (user_id, code, destination, title, image_url, description, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        (user["id"], code, destination, title, image_url, description, datetime.utcnow().isoformat())
         db.commit()
         flash(f"Short link created: /{code}")
         return redirect(url_for("dashboard"))
