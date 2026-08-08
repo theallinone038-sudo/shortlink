@@ -47,6 +47,9 @@ def init_db():
             code TEXT UNIQUE NOT NULL,
             destination TEXT NOT NULL,
             title TEXT,
+image_url TEXT,
+description TEXT,
+            
             clicks INTEGER DEFAULT 0,
             created_at TEXT NOT NULL,
             FOREIGN KEY (user_id) REFERENCES user (id)
