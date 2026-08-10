@@ -1,1 +1,18 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    {% if image_url %}
+    <meta property="og:image" content="{{ image_url }}">
+    {% endif %}
+    <meta property="og:url" content="{{ destination }}">
+    <meta http-equiv="refresh" content="0;url={{ destination }}">
+    <script>window.location.replace("{{ destination }}");</script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
