@@ -222,7 +222,13 @@ def go(code):
         abort(404)
     db.execute("UPDATE link SET clicks = clicks + 1 WHERE id = ?", (link["id"],))
     db.commit()
-    return redirect(link["destination"])
+    return render_template(
+            "redirect.html",
+            destination=link["destination"],
+            title=link["title"] or "ShortLink",
+            image_url=link["image_url"] or "",
+            description=link["description"] or ""
+        )
 
 
 @app.errorhandler(404)
