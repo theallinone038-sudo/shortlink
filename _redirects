@@ -1,2 +1,2 @@
-/:code  /.netlify/functions/redirect/:code  200
-/*      /index.html  200
+/*    /index.html   200
+
