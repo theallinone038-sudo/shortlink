@@ -401,7 +401,8 @@ https://example.com/image2.jpg"></textarea>
     if(error){ msg.className='msg err'; msg.textContent = error.message; return; }
     msg.className='msg ok'; msg.textContent = `Created ${data.length} links.`;
     const resultDiv = document.getElementById('bulkResult');
-    resultDiv.innerHTML = data.map(r => `<div class="result-link"><a href="${shortUrlFor(r.code)}" target="_blank">${shortUrlFor(r.code)}</a><button class="btn btn-ghost btn-sm" onclick="copyText('${shortUrlFor(r.code)}', this)">Copy</button></div>`).join('');
+    const allLinks = data.map(r => shortUrlFor(r.code)).join('\n');
+resultDiv.innerHTML = `<button class="btn btn-blue btn-sm" style="margin-bottom:10px;" onclick="copyText(\`${allLinks}\`, this)">📋 Copy All Links</button>` + data.map(r => `<div class="result-link"><a href="${shortUrlFor(r.code)}" target="_blank">${shortUrlFor(r.code)}</a><button class="btn btn-ghost btn-sm" onclick="copyText('${shortUrlFor(r.code)}', this)">Copy</button></div>`).join('');
     loadLinks();
   }
 
