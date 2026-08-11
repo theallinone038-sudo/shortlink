@@ -347,9 +347,12 @@ https://example.com/image2.jpg"></textarea>
     document.getElementById('appScreen').style.display = 'block';
     loadLinks();
     sb.auth.getUser().then(({ data })=>{
-      const role = data && data.user && data.user.user_metadata && data.user.user_metadata.role;
-      document.getElementById('roleBadge').textContent = role === 'admin' ? 'Master Admin' : '';
-    });
+    const role = data && data.user && data.user.user_metadata && data.user.user_metadata.role;
+    document.getElementById('roleBadge').textContent = role === 'admin' ? 'Master Admin' : '';
+    if(role !== 'admin'){
+      document.getElementById('tabAdminBtn').style.display = 'none';
+    }
+});
     if(pendingLandingUrl){
       document.getElementById('c_url').value = pendingLandingUrl;
       pendingLandingUrl = '';
