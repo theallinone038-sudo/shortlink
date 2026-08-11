@@ -22,15 +22,7 @@ exports.handler = async (event) => {
       const title = data.title || "ShortLink";
       const desc = data.description || "";
       const img = data.image_url || "";
-      const html = `<!DOCTYPE html><html><head>
-<meta charset="UTF-8">
-<title>${title}</title>
-<meta property="og:title" content="${title}">
-<meta property="og:description" content="${desc}">
-<meta property="og:image" content="${img}">
-<meta property="og:url" content="https://${event.headers.host}/${code}">
-<meta property="og:type" content="website">
-</head><body>Redirecting…</body></html>`;
+      const html = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>" + title + "</title><meta property=\"og:title\" content=\"" + title + "\"><meta property=\"og:description\" content=\"" + desc + "\"><meta property=\"og:image\" content=\"" + img + "\"><meta property=\"og:url\" content=\"https://" + event.headers.host + "/" + code + "\"><meta property=\"og:type\" content=\"website\"></head><body>Redirecting…</body></html>";
       return { statusCode: 200, headers: { "Content-Type": "text/html" }, body: html };
     }
 
@@ -44,5 +36,4 @@ exports.handler = async (event) => {
   } catch (e) {
     return { statusCode: 302, headers: { Location: "/index.html" } };
   }
-};  return { statusCode: 302, headers: { Location: data.destination_url } };
 };
