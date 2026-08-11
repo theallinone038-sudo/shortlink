@@ -441,7 +441,7 @@ resultDiv.innerHTML = `<button class="btn btn-blue btn-sm" style="margin-bottom:
     try{
       const headers = await authHeader();
       const [usersRes, linksCountRes] = await Promise.all([
-        fetch(/api/list-users', { headers }),
+        fetch('/api/list-users', { headers }),
         sb.from('links').select('*', { count: 'exact', head: true })
       ]);
       const usersData = await usersRes.json();
